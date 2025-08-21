@@ -1,0 +1,9 @@
+{
+	"name": "atcopoc-devadf",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "88cdc818-a162-4df7-bc01-c601348c5874",
+		"tenantId": "e4e34038-ea1f-4882-b6e8-ccd776459ca0"
+	}
+}
