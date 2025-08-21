@@ -1,0 +1,31 @@
+name: Deploy ADF to PROD
+
+on:
+  push:
+    branches:
+      - adf-publish   # correct branch name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Deploy ADF to Prod
+        uses: azure/cli@v1
+        with:
+          inlineScript: |
+            az deployment group create \
+              --resource-group AnshulSinha-rg \
+              --template-file adf_publish/ARMTemplateForFactory.json \
+              --parameters @adf_publish/prod.parameters.json \
+              factoryName=atcopoc-prodadf \
+              location="East US"
