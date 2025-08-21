@@ -3,7 +3,8 @@ name: Deploy ADF to PROD
 on:
   push:
     branches:
-      - adf_publish   
+      - adf_publish   # triggers when you publish from ADF
+  workflow_dispatch:   # allows manual trigger from GitHub UI
 
 jobs:
   deploy:
