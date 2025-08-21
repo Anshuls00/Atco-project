@@ -3,7 +3,7 @@ name: Deploy ADF to PROD
 on:
   push:
     branches:
-      - adf-publish   
+      - adf_publish   
 
 jobs:
   deploy:
